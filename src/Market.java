@@ -37,6 +37,11 @@ public class Market {
 
 
     }
+    public void afficherAssets(){
+        for(Asset asset : assets){
+            System.out.println(asset);
+        }
+    }
     public void addTrader(){
         System.out.println("====Ajouter Trader ========");
         System.out.println("entrer L'ID");
