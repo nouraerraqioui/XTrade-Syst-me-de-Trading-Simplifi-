@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Trader extends Pesrson {
+public class Trader extends Person {
    private double SoldeInit;
    private List<Trader> traders = new ArrayList<>();
     private List<Asset> assets = new ArrayList<>();
