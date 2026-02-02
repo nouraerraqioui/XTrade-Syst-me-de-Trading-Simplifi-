@@ -1,14 +1,14 @@
 import java.util.ArrayList;
-import Portfolio.Portfolio;
+
 
 import java.util.List;
 import java.util.Scanner;
 public  class Market {
     private List<Asset> assets = new ArrayList<>();
     private List<Trader> traders = new ArrayList<>();
-    private Portfolio portfolio ;
-    private static Scanner input = new Scanner(System.in);
-    public void addAsset(){
+
+    static Scanner input = new Scanner(System.in);
+    public void ajouterAsset(){
         System.out.println("====Ajouter Asset========");
         System.out.println("entrer Le code");
         int code = input.nextInt();
@@ -32,7 +32,7 @@ public  class Market {
         for (Asset asset : assets) {
             System.out.println(asset);
         }}
-        public void addTrader () {
+        public void ajouterTrader () {
             System.out.println("====Ajouter Trader ========");
             System.out.println("entrer L'ID");
             int id = input.nextInt();
