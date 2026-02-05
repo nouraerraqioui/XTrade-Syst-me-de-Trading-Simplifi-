@@ -5,15 +5,13 @@ public abstract class Asset {
     private String type;
     private int quantite;
 
-    public  abstract double calculvalue();
-
+//constructor getters/setters
     public Asset(int code, String nom, double prixUnitaire, String type, int quantite) {
         this.code = code;
         this.nom = nom;
         this.prixUnitaire = prixUnitaire;
         this.type = type;
         this.quantite = quantite;
-
     }
 
     public int getCode() {
@@ -39,14 +37,15 @@ public abstract class Asset {
     public void setPrixUnitaire(double prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
-
-    public String getType() {
-        return type;
-    }
-
     public void setType(String type) {
         this.type = type;
     }
     public int getQuantites() { return quantite;}
     public void setQuantites(int quantites) { this.quantite = quantite;}
+
+    // methodes gettype & calculvalue
+    public abstract String getType();
+    public double calculvalue() {
+        return getPrixUnitaire()*getQuantites();
+    }
 }

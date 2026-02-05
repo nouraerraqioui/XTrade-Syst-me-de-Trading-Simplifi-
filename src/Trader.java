@@ -1,41 +1,38 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.RecursiveTask;
 
 public class Trader extends Person {
-    private double SoldInt;
-    private Portfolio portfolio;
-    private List<Transaction> transactions= new ArrayList<Transaction>();
+    private double SoldeInit;
+    private List<Trader> traders = new ArrayList<>();
+    private List<Asset> assets = new ArrayList<>();
 
-    public Trader(int id, String nom, double soldInt) {
-        super(id, nom);
-        this.SoldInt = soldInt;
-        this.portfolio = new Portfolio();
+    public Trader(int id, String nom ,double soldeInit) {
+        super( id, nom);
 
+        SoldeInit = soldeInit;
+    }
+    public double getSoldeInit() {
+        return SoldeInit;
     }
 
-    public double getSoldInt() {
-        return SoldInt;
+    public List<Trader> getTraders() {
+        return traders;
     }
 
-    public void setSoldInt(double soldInt) {
-        SoldInt = soldInt;
-    }
-    public double acheterAsset(Asset asset){
-        double value = asset.getPrixUnitaire()* asset.getQuantites();
-        value += SoldInt;
-        return value;
+    public List<Asset> getAssets() {
+        return assets;}
+
+
+    public void setSoldeInit(double soldeInit) {
+        SoldeInit = soldeInit;
     }
 
-    public double vendreAsset(Asset asset){
-        double value = asset.getPrixUnitaire()* asset.getQuantites();
-        value -= SoldInt;
-        return value;
-    }
-    public void creePortfolio(Portfolio portfolio){
-        this.portfolio = portfolio;
+
     }
 
 
 
 
-}
+
+

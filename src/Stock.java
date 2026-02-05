@@ -4,7 +4,8 @@ public class Stock extends Asset {
         super(code, nom, prixUnitaire, type, quantite);
     }
     @Override
-    public double calculvalue(){
-        return getPrixUnitaire()*getQuantites();
+    public String getType() {
+        return "Stock";
     }
 }
+

@@ -1,16 +1,21 @@
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Transaction {
     private String type;
+    private Asset asset;
+
     private int quantite;
     private double prix;
-    private Date Date;
+    private LocalDate Date;
 
-    public Transaction(String type, int quantite, double prix, Date Date) {
+    public Transaction(String type,Asset asset ,int quantite, double prix) {
         this.type = type;
+        this.asset = asset;
         this.quantite = quantite;
         this.prix = prix;
-        this.Date = Date;
+        this.Date = LocalDate.now();
+
     }
 
     public String getType() {
@@ -25,9 +30,7 @@ public class Transaction {
         return prix;
     }
 
-    public Date getDate() {
-        return Date;
-    }
+
 
     public void setType(String type) {
         this.type = type;
@@ -41,7 +44,14 @@ public class Transaction {
         this.prix = prix;
     }
 
-    public void setDate(Date Date) {
-        this.Date = Date;
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "type='" + type + '\'' +
+                ", asset=" + asset +
+                ", quantite=" + quantite +
+                ", prix=" + prix +
+                ", Date=" + Date +
+                '}';
     }
 }
