@@ -181,19 +181,21 @@ public class Market {
     }
     public void TrierDate(){
         List<Transaction> transactions2 = transactions;
-        transactions2.stream().sorted((t1,t2)->t1.getDate().compareTo(t2.getDate()));
+        transactions2.stream().sorted((t1,t2)->t1.getDate().compareTo(t2.getDate())).toList();
     }
-    public void filtrerMontant(){
+    public void TriMontant(){
         System.out.println("===== Montant =====");
         List<Transaction> transactions2 = transactions;
-        transactions2.stream().sorted((t1,t2)-> t1.getPrix());
+        transactions2.stream().sorted((t1,t2)-> Double.compare(t1.getPrix(),  t2.getPrix())).toList();
         transactions2.forEach(System.out::println);
     }
-    public void Tot(){
-        System.out.println("===== FILTER PAR INTERVALE DE DATES =====");
-        List<Transaction> transactions2 = transactions;
-        transactions2.stream().filter(t->t.getPrix()==montant).toList();
-        transactions2.forEach(System.out::println);
+    public void TotaleActif(){
+        System.out.println("===Totale d'Actif ==");
+        System.out.println("Le type d'asset STOCK/CRYPTO:");
+        String  type = input.nextLine();
+        List<Transaction>  Stocks= transactions;
+        Stocks.stream().filter(t->t.getType().equals(type)).toList();
+        double sum = Stocks.stream().mapToDouble(t -> t.getPrix()).sum();
     }
     public  void vendreAsset() {
         System.out.println("===== vendre asset =====");
