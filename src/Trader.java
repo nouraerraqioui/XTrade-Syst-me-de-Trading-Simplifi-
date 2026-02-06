@@ -4,7 +4,6 @@ import java.util.concurrent.RecursiveTask;
 
 public class Trader extends Person {
     private double SoldeInit;
-    private List<Trader> traders = new ArrayList<>();
     private List<Asset> assets = new ArrayList<>();
 
     public Trader(int id, String nom ,double soldeInit) {
@@ -16,9 +15,6 @@ public class Trader extends Person {
         return SoldeInit;
     }
 
-    public List<Trader> getTraders() {
-        return traders;
-    }
 
     public List<Asset> getAssets() {
         return assets;}

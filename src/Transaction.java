@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 public class Transaction {
     private String type;
     private Asset asset;
-
+   private Trader trader;
     private int quantite;
     private double prix;
     private LocalDate Date;
@@ -16,6 +16,14 @@ public class Transaction {
         this.prix = prix;
         this.Date = LocalDate.now();
 
+    }
+
+    public Trader getTrader() {
+        return trader;
+    }
+
+    public void setTrader(Trader trader) {
+        this.trader = trader;
     }
 
     public String getType() {
@@ -42,6 +50,22 @@ public class Transaction {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public Asset getAsset() {
+        return asset;
+    }
+
+    public void setAsset(Asset asset) {
+        this.asset = asset;
+    }
+
+    public LocalDate getDate() {
+        return Date;
+    }
+
+    public void setDate(LocalDate date) {
+        Date = date;
     }
 
     @Override

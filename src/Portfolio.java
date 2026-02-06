@@ -5,6 +5,7 @@ import java.util.List;
 public class Portfolio {
 
     List<PortAsset> portAssets = new ArrayList<>();
+
     public void addAsset(Asset asset, int quantite) {
 
         for (PortAsset port : portAssets) {

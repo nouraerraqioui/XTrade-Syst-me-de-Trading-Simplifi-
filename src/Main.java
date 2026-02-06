@@ -24,7 +24,7 @@ public  class Main {
                         market.addAsset();
                         break;
                     case 3:
-                        market.filtrer();
+                        market.filtrerParType();
                         break;
                 }
         } while (choix != 5);

@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,9 +9,8 @@ public class Market {
     private Portfolio portfolio ;
     List<Transaction> transactions = new ArrayList<>();
      static Scanner input = new Scanner(System.in);
-
-
     public void addAsset(){
+
         System.out.println("====Ajouter Asset========");
         System.out.println("entrer Le code");
         int code = input.nextInt();
@@ -25,7 +25,7 @@ public class Market {
         System.out.println("Entrer quantite :");
         int quantite =input.nextInt();
         if(type.equals("S")){
-         Asset   asset = new Stock(code,nom,prixUnitaire,type,quantite);
+         Asset  asset = new Stock(code,nom,prixUnitaire,type,quantite);
             assets.add(asset);
         }
         else if(type.equals("C")){
@@ -79,8 +79,6 @@ public class Market {
             System.out.println(a.getNom());
         }
     }
-
-
     public void acheterAsset() {
 
         System.out.println("===== ACHETER ASSET =====");
@@ -142,24 +140,61 @@ public class Market {
         asset.setQuantites(asset.getQuantites() - qte);
         trader.setSoldeInit(trader.getSoldeInit() - total);
          transactions.add(new Transaction("achat",asset,qte,total));
-         for(Transaction a : transactions){
-             System.out.println("Type d'operation : "+a.getType() + "quantite : " +qte+"prix : "+total );
-         }
 
         System.out.println("Achat réussi !");
     }
     public void afficherTransactions(){
-
-        for(Transaction a : transactions){
-            System.out.println("Type d'operation : "+a.getType() + "quantite : " +a.getQuantite()+"prix : "+a.getPrix() );
-        }
+        System.out.println("entrer l'ID de trader : ");
+        int id = input.nextInt();
+        List<Transaction> transactions1 = transactions;
+       transactions1.stream().filter(t->t.getTrader().getId()==id).forEach(System.out::println);
     }
-    public void filtrer(){
+    public void filtrerParType(){
+        System.out.println("===== FILTER PAR TYPE =====");
+        System.out.println("Le type  :");
+      String  type = input.nextLine();
 
-        List<Transaction> transactions1 = transactions;transactions1.stream().filter(t->t.getType().equals("achat")).toList()
+        List<Transaction> achats = transactions;
+        achats.stream().filter(t->t.getType().equals(type)).toList()
         .forEach(System.out::println);
-    }
+        List<Transaction> vents = transactions;
+        vents.stream().filter(t->t.getType().equals(type)).toList()
+                .forEach(System.out::println);}
+    public void filtrerParAsset(){
 
+        System.out.println("===== FILTER PAR ASSET =====");
+        System.out.println("Le type d'asset STOCK/CRYPTO:");
+        String  type = input.nextLine();
+        List<Transaction>  Stocks= transactions;
+        Stocks.stream().filter(t->t.getType().equals(type)).toList()
+                .forEach(System.out::println);
+
+        List<Transaction> CRYPTO = transactions;
+        CRYPTO.stream().filter(t->t.getType().equals(type)).toList()
+                .forEach(System.out::println);
+    }
+    public void filtrerParIntervale(LocalDate startDate, LocalDate endDate){
+        System.out.println("===== FILTER PAR INTERVALE DE DATES =====");
+        List<Transaction> transactions2 = transactions;
+       transactions2.stream().filter(t->t.getDate().isBefore(startDate)  && t.getDate().isAfter(endDate)).toList();
+       transactions2.forEach(System.out::println);
+    }
+    public void TrierDate(){
+        List<Transaction> transactions2 = transactions;
+        transactions2.stream().sorted((t1,t2)->t1.getDate().compareTo(t2.getDate()));
+    }
+    public void filtrerMontant(){
+        System.out.println("===== Montant =====");
+        List<Transaction> transactions2 = transactions;
+        transactions2.stream().sorted((t1,t2)-> t1.getPrix());
+        transactions2.forEach(System.out::println);
+    }
+    public void Tot(){
+        System.out.println("===== FILTER PAR INTERVALE DE DATES =====");
+        List<Transaction> transactions2 = transactions;
+        transactions2.stream().filter(t->t.getPrix()==montant).toList();
+        transactions2.forEach(System.out::println);
+    }
     public  void vendreAsset() {
         System.out.println("===== vendre asset =====");
 
